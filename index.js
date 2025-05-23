@@ -8,7 +8,12 @@ const bookRouter = require("./router/book");
 const userRouter = require("./router/users");
 
 // allow access of the api
-app.use(cors());
+app.use(cors({
+  origin: "https://book-review-client-mirw.vercel.app", // your frontend's deployed domain
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
 
 // to support incoming form data in json
 app.use(express.json());
